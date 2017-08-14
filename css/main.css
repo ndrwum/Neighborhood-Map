@@ -1,0 +1,24 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    color: whitesmoke;
+}
+#map {
+    height: 100%;
+    width: 100%;
+    color: black;
+}
+
+.navbar-toggle{
+    float: left; 
+}
+
+.form-control {
+    width: 220px;
+}
+
+@media (min-width: 0) {
+    .navbar-toggle-reveal {
+        display: block; 
+    }
+}
