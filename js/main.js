@@ -49,13 +49,14 @@ $(document).ready(function () {
                 id: x
             });
 
-            marker.addListener('click', handleclick);
+            marker.addListener('click', handleClick);
             markers.push(marker);
         }
 
         //click on marker
-        function handleclick() {
+        function handleClick() {
             this.setAnimation(google.maps.Animation.BOUNCE);
+             stopAnimation(this);
             fillInfoWindows(this, infoWindow);
         }
 
@@ -90,19 +91,22 @@ $(document).ready(function () {
             for (var i = 0; i < markers.length; i++) {
                 if (markers[i].name === linkClick) {
                     markers[i].setAnimation(google.maps.Animation.BOUNCE);
+                    stopAnimation(markers[i]);
                     fillInfoWindows(markers[i], infoWindow);
                 }
             }
         };
 
+        function stopAnimation(marker){
+            setTimeout(function(){ marker.setAnimation(null); }, 600);
+        }
         //knockoutJS viewmodel
         var viewModel = {
             places: ko.observableArray(landmarks),
             query: ko.observable(''),
             search: function (value) {
-
-                viewModel.places.removeAll();
-                //had to create copy of landmarks var because of hoisting
+                viewModel.places([]);
+           /*     viewModel.places.removeAll();
                 var landmarks = [
                     {
                         "name": 'Seoul Museum of Art',
@@ -129,7 +133,7 @@ $(document).ready(function () {
                         "lat": 37.567491,
                         "long": 126.97713
         }
-];
+];*/
                 for (var j = 0; j < landmarks.length; j++) {
                     //console.log(value);
                     if (landmarks[j].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
