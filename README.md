@@ -10,6 +10,10 @@ The five chosen locations are popular locations in Seoul, KR.
 
 Download the zip file, unzip and open index.html
 
+## Screenshot
+
+![Alt text](/Capture.PNG?raw=true "Screenshot")
+
 ## Contributor
 
 Andrew Um
